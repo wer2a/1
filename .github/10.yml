@@ -1,0 +1,23 @@
+name: Create Windows 10 RDP Environment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up RDP
+      uses: peaceiris/actions-windows-rdp@v2
+      with:
+        user: ${{ secrets.RDP_USER }}
+        password: ${{ secrets.RDP_PASSWORD }}
+        timezone: "Pacific Standard Time" # Adjust as needed
+
+    # Add additional steps as needed for your specific workflow
